@@ -3,4 +3,4 @@ Calculates ultimate bearing capacity using Terzaghi's general bearing capacity f
 
 I made this because I'm taking geotechnical engineering/foundation design and I'm lazy.
 
-Right now, only works with US freedom units. May add SI at some point. 
+Right now, only works with FREEDOM UNITS. May add SI at some point
