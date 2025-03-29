@@ -14,7 +14,7 @@ L = st.number_input("Enter length of foundation (L) in ft:", min_value=0.0, step
 beta = st.number_input("Enter load inclination angle (β) in degrees:", min_value=0.0, max_value=90.0, step=0.1)
 
 if st.button("Calculate"):
-    if min(c, phi, q, gamma, Df, B, L, beta) <= 0:
+    if min(c, phi, q, gamma, Df, B, L, beta) < 0:
         st.error("Error: values cannot be negative or zero.")
     else:
         phi_rad = math.radians(phi)
