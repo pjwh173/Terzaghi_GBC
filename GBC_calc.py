@@ -4,9 +4,10 @@ def terzaghi_bearing_capacity():
     print("✨ Terzaghi's Ultimate Bearing Capacity Calculator✨\n")
 
     # Input values
-    c = float(input("Enter cohesion (c) in lb/ft²: "))
+    c = float(input("Enter cohesion (c) in psf: "))
     phi = float(input("Enter angle of internal friction (ϕ) in degrees: "))
-    gamma = float(input("Enter unit weight of soil (γ) in lb/ft³: "))
+    q = float(input("Enter effective stress at foundation base (q) in psf: "))
+    gamma = float(input("Enter unit weight of soil (γ) in pcf: "))
     Df = float(input("Enter depth of foundation (Df) in ft: "))
     B = float(input("Enter width of foundation (B) in ft: "))
     L = float(input("Enter length of foundation (L) in ft: "))
@@ -52,7 +53,11 @@ def terzaghi_bearing_capacity():
 
     # Inclination factors
     Fci = Fqi = (1 - beta / 90)**2
-    Fgi = (1 - beta / 90)**2
+    if phi == 0:
+        Fgi = 1 
+    else: 
+        pass
+    Fgi = (1 -  ( beta / phi ) )**2
 
     # Display calculated factors
     print("\n--- Terzaghi Bearing Capacity Factors ---")
@@ -68,7 +73,7 @@ def terzaghi_bearing_capacity():
     print(f"Fci = {Fci:.3f}, Fqi = {Fqi:.3f}, Fγi = {Fgi:.3f}")
 
     # Ultimate bearing capacity calculation (with factors)
-    qu = (c * Nc * Fcs * Fcd * Fci) + (gamma * Df * Nq * Fqs * Fqd * Fqi) + (0.5 * gamma * B * Ngamma * Fgs * Fgd * Fgi)
+    qu = (c * Nc * Fcs * Fcd * Fci) + (q * Nq * Fqs * Fqd * Fqi) + (0.5 * gamma * B * Ngamma * Fgs * Fgd * Fgi)
 
     # Display result
     print("\n🔥 Ultimate Bearing Capacity (qu) 🔥")
